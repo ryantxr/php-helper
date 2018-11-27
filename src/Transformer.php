@@ -1,4 +1,4 @@
-<?php namespace Ryantxr\ArrayHelper;
+<?php namespace Ryantxr\Helper;
 
 /**
  *  A sample class
