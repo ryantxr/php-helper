@@ -1,16 +1,25 @@
-Composer Library Template
-=========================
-
-If you are trying to create a new PHP Composer library, whether it will be going to submitted to packagist.org or just in your Github account, this template of files will surely help you make the process a lot easier and faster.
-
-Features
---------
-
-* PSR-4 autoloading compliant structure
-* Unit-Testing with PHPUnit
-* Comprehensive Guides and tutorial
-* Easy to use to any framework or even a plain php file
-
-
-I encourage that you put more information on this readme file instead of leaving it as is. See [How to make a README file](http://www.darwinbiler.com/designing-and-making-the-readme-file-for-your-github-repository/) for more info.
 # php-helper
+
+Array and String Helpers.
+
+These are the array functions from Laravel packaged to be used independently of
+any framework. These functions are namespaced and created as static functions
+of a class.
+
+This is not yet in Packagist and I'm not sure I will put it there.
+
+You can install with Composer from the repo. Add the following to composer.json.
+
+```json
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:ryantxr/php-helper.git"
+        }
+    ],
+    "require":{
+        "ryantxr/helper": "dev-master"
+    }
+```
+
+Versions will be added later. Use dev-master for now.

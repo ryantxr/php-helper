@@ -1,0 +1,24 @@
+{
+    "name": "ryantxr/helper",
+    "description": "Functions for arrays and strings.",
+    "keywords": ["associative", "arrays", "strings", "transform"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Teixeira",
+            "email": "ryan@ryantxr.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+		"php": ">=7.1"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ryantxr\\Helper\\": "src/"
+        }
+    }
+}
