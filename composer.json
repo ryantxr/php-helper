@@ -1,7 +1,7 @@
 {
     "name": "ryantxr/helper",
     "description": "Functions for arrays and strings.",
-    "keywords": ["associative", "arrays", "strings", "transform"],
+    "keywords": ["associative", "arrays", "strings", "transform", "timer"],
     "license": "MIT",
     "authors": [
         {
