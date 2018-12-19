@@ -23,3 +23,15 @@ You can install with Composer from the repo. Add the following to composer.json.
 ```
 
 Versions will be added later. Use dev-master for now.
+
+## Timer
+
+This is a millisecond timer used to measure elapsed time.
+
+```php
+use Ryantxr\Helper\Timer;
+$t = new Timer();
+$t->millisecondStart();
+// do something
+$elapsed = $t->millisecondElapsed();
+```

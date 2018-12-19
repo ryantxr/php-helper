@@ -24,4 +24,28 @@ class TimerTest extends PHPUnit\Framework\TestCase
         // echo 'ELAPSED ' . $elapsed . "\n";
         $this->assertTrue($elapsed >= 2000);
     }
+
+    /**
+     * @test
+     * Ensures that there is a minimum time for each iteration.
+     */
+    public function velocity()
+    {
+        $t = new Timer();
+        echo "\n";
+        for ( $i=0; $i<5; $i++ ) {
+            $t->millisecondStart();
+
+            usleep(mt_rand(900, 9999));
+
+            $elapsed = $t->millisecondElapsed();
+            if ( $elapsed < 1000 ) {
+                usleep((1000-$elapsed)*1000);
+            }
+            $trueElapsed = $t->millisecondElapsed();
+
+            echo "$i " . $elapsed . ' ' . $trueElapsed . "\n";
+            $this->assertTrue($trueElapsed >= 1000);
+        }
+    }
 }
