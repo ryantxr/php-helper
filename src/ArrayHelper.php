@@ -8,7 +8,7 @@ class ArrayHelper
      * @param  array  $array
      * @return  array
      */
-    function append_config(array $array)
+    public static function append_config(array $array)
     {
         $start = 9999;
         foreach ($array as $key => $value) {
@@ -27,7 +27,7 @@ class ArrayHelper
      * @param  mixed   $value
      * @return array
      */
-    function array_add($array, $key, $value)
+    public static function array_add($array, $key, $value)
     {
         if (is_null(self::array_get($array, $key))) {
             self::array_set($array, $key, $value);
@@ -40,7 +40,7 @@ class ArrayHelper
      * @param  array  $array
      * @return array
      */
-    function array_collapse($array)
+    public static function array_collapse($array)
     {
         $results = [];
         foreach ($array as $values) {
@@ -59,7 +59,7 @@ class ArrayHelper
      * @param  array  $array
      * @return array
      */
-    function array_divide($array)
+    public static function array_divide($array)
     {
         return [array_keys($array), array_values($array)];
     }
@@ -70,7 +70,7 @@ class ArrayHelper
      * @param  string  $prepend
      * @return array
      */
-    function array_dot($array, $prepend = '')
+    public static function array_dot($array, $prepend = '')
     {
         $results = [];
         foreach ($array as $key => $value) {
@@ -90,7 +90,7 @@ class ArrayHelper
      * @param  array|string  $keys
      * @return array
      */
-    function array_except($array, $keys)
+    public static function array_except($array, $keys)
     {
         self::array_forget($array, $keys);
         return $array;
@@ -103,7 +103,7 @@ class ArrayHelper
      * @param  string|int  $key
      * @return bool
      */
-    function array_exists($array, $key)
+    public static function array_exists($array, $key)
     {
         if ($array instanceof ArrayAccess) {
             return $array->offsetExists($key);
@@ -119,7 +119,7 @@ class ArrayHelper
      * @param  mixed  $default
      * @return mixed
      */
-    function array_first($array, callable $callback = null, $default = null)
+    public static function array_first($array, callable $callback = null, $default = null)
     {
         if (is_null($callback)) {
             if (empty($array)) {
@@ -144,7 +144,7 @@ class ArrayHelper
      * @param  int  $depth
      * @return array
      */
-    function array_flatten($array, $depth = INF)
+    public static function array_flatten($array, $depth = INF)
     {
         $result = [];
         foreach ($array as $item) {
@@ -166,7 +166,7 @@ class ArrayHelper
      * @param  array|string  $keys
      * @return void
      */
-    function array_forget(&$array, $keys)
+    public static function array_forget(&$array, $keys)
     {
         $original = &$array;
         $keys = (array) $keys;
@@ -202,7 +202,7 @@ class ArrayHelper
      * @param  mixed   $default
      * @return mixed
      */
-    function array_get($array, $key, $default = null)
+    public static function array_get($array, $key, $default = null)
     {
         if (! self::array_accessible($array)) {
             return self::value($default);
@@ -233,7 +233,7 @@ class ArrayHelper
      * @param  string|array  $keys
      * @return bool
      */
-    function array_has($array, $keys)
+    public static function array_has($array, $keys)
     {
         if (is_null($keys)) {
             return false;
@@ -269,7 +269,7 @@ class ArrayHelper
      * @param  mixed  $default
      * @return mixed
      */
-    function array_last($array, callable $callback = null, $default = null)
+    public static function array_last($array, callable $callback = null, $default = null)
     {
         if (is_null($callback)) {
             return empty($array) ? self::value($default) : end($array);
@@ -284,7 +284,7 @@ class ArrayHelper
      * @param  array|string  $keys
      * @return array
      */
-    function array_only($array, $keys)
+    public static function array_only($array, $keys)
     {
         return array_intersect_key($array, array_flip((array) $keys));
     }
@@ -297,7 +297,7 @@ class ArrayHelper
      * @param  string|array|null  $key
      * @return array
      */
-    function array_pluck($array, $value, $key = null)
+    public static function array_pluck($array, $value, $key = null)
     {
         $results = [];
         list($value, $key) = explodePluckParameters($value, $key);
@@ -327,7 +327,7 @@ class ArrayHelper
      * @param  mixed  $key
      * @return array
      */
-    function array_prepend($array, $value, $key = null)
+    public static function array_prepend($array, $value, $key = null)
     {
         if (is_null($key)) {
             array_unshift($array, $value);
@@ -345,7 +345,7 @@ class ArrayHelper
      * @param  mixed   $default
      * @return mixed
      */
-    function array_pull(&$array, $key, $default = null)
+    public static function array_pull(&$array, $key, $default = null)
     {
         $value = self::array_get($array, $key, $default);
         self::array_forget($array, $key);
@@ -359,7 +359,7 @@ class ArrayHelper
      * @param  int|null  $num
      * @return mixed
      */
-    function array_random($array, $num = null)
+    public static function array_random($array, $num = null)
     {
         $requested = is_null($num) ? 1 : $num;
         $count = count($array);
@@ -392,7 +392,7 @@ class ArrayHelper
      * @param  mixed   $value
      * @return array
      */
-    function array_set(&$array, $key, $value)
+    public static function array_set(&$array, $key, $value)
     {
         if (is_null($key)) {
             return $array = $value;
@@ -419,7 +419,7 @@ class ArrayHelper
      * @param  callable  $callback
      * @return array
      */
-    function array_where($array, callable $callback)
+    public static function array_where($array, callable $callback)
     {
         return array_filter($array, $callback, ARRAY_FILTER_USE_BOTH);
     }
@@ -430,7 +430,7 @@ class ArrayHelper
      * @param  mixed  $value
      * @return array
      */
-    function array_wrap($value)
+    public static function array_wrap($value)
     {
         if (is_null($value)) {
             return [];
@@ -444,7 +444,7 @@ class ArrayHelper
      * @param  mixed  $value
      * @return bool
      */
-    function blank($value)
+    public static function blank($value)
     {
         if (is_null($value)) {
             return true;
@@ -469,7 +469,7 @@ class ArrayHelper
      * @param  mixed  $value
      * @return mixed
      */
-    function data_fill(&$target, $key, $value)
+    public static function data_fill(&$target, $key, $value)
     {
         return data_set($target, $key, $value, false);
     }
@@ -482,7 +482,7 @@ class ArrayHelper
      * @param  mixed   $default
      * @return mixed
      */
-    function data_get($target, $key, $default = null)
+    public static function data_get($target, $key, $default = null)
     {
         if (is_null($key)) {
             return $target;
@@ -518,7 +518,7 @@ class ArrayHelper
      * @param  bool  $overwrite
      * @return mixed
      */
-    function data_set(&$target, $key, $value, $overwrite = true)
+    public static function data_set(&$target, $key, $value, $overwrite = true)
     {
         $segments = is_array($key) ? $key : explode('.', $key);
         if (($segment = array_shift($segments)) === '*') {
@@ -569,7 +569,7 @@ class ArrayHelper
      * @param  mixed  $value
      * @return bool
      */
-    function filled($value)
+    public static function filled($value)
     {
         return ! blank($value);
     }
@@ -580,7 +580,7 @@ class ArrayHelper
      * @param  array  $array
      * @return mixed
      */
-    function head($array)
+    public static function head($array)
     {
         return reset($array);
     }
@@ -591,7 +591,7 @@ class ArrayHelper
      * @param  array  $array
      * @return mixed
      */
-    function last($array)
+    public static function last($array)
     {
         return end($array);
     }
@@ -604,7 +604,7 @@ class ArrayHelper
      * @param  array  $array
      * @return bool
      */
-    function isAssoc(array $array)
+    public static function isAssoc(array $array)
     {
         $keys = array_keys($array);
         return array_keys($keys) !== $keys;
@@ -617,7 +617,7 @@ class ArrayHelper
      * @param  string|array|null  $key
      * @return array
      */
-    function explodePluckParameters($value, $key)
+    public static function explodePluckParameters($value, $key)
     {
         $value = is_string($value) ? explode('.', $value) : $value;
         $key = is_null($key) || is_array($key) ? $key : explode('.', $key);
@@ -632,7 +632,7 @@ class ArrayHelper
      * @param  mixed  $default
      * @return mixed
      */
-    function first($array, callable $callback = null, $default = null)
+    public static function first($array, callable $callback = null, $default = null)
     {
         if (is_null($callback)) {
             if (empty($array)) {
@@ -658,7 +658,7 @@ class ArrayHelper
      * @param  mixed  $default
      * @return mixed|null
      */
-    function transform($value, callable $callback, $default = null)
+    public static function transform($value, callable $callback, $default = null)
     {
         if (self::filled($value)) {
             return $callback($value);
@@ -675,7 +675,7 @@ class ArrayHelper
      * @param  mixed  $value
      * @return mixed
      */
-    function value($value)
+    public static function value($value)
     {
         return $value instanceof Closure ? $value() : $value;
     }
@@ -687,7 +687,7 @@ class ArrayHelper
      * @param  callable|null  $callback
      * @return mixed
      */
-    function with($value, callable $callback = null)
+    public static function with($value, callable $callback = null)
     {
         return is_null($callback) ? $value : $callback($value);
     }
@@ -698,7 +698,7 @@ class ArrayHelper
      * @param  mixed  $value
      * @return bool
      */
-    function array_accessible($value)
+    public static function array_accessible($value)
     {
         return is_array($value) || $value instanceof ArrayAccess;
     }
@@ -710,7 +710,7 @@ class ArrayHelper
      * @param  callable|string|null  $callback
      * @return array
      */
-    function array_sort($array, $callback = null)
+    public static function array_sort($array, $callback = null)
     {
         if (self::isAssoc($array)) {
             ksort($array);
@@ -728,7 +728,7 @@ class ArrayHelper
      * @param  array  $array
      * @return array
      */
-    function array_sort_recursive($array)
+    public static function array_sort_recursive($array)
     {
         foreach ($array as &$value) {
             if (is_array($value)) {
